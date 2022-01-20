@@ -16,7 +16,7 @@ function App() {
     <div>
       <InputForm />
     </div>
-    
+
     <Switch>
 
       <Route path="/people/:Id">
@@ -26,7 +26,7 @@ function App() {
         <Planet />
       </Route>
       <Route path="/starships/:Id">
-        <Planet />
+        <Starships />
       </Route>
           
     </Switch>

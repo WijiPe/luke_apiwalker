@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 const Planet = () => {
     const [data, setData] = useState()
     const {Id} = useParams();
+    const [errorImg, setErrorImg] = useState("");
     
     useEffect(() => {
         axios.get(`https://swapi.dev/api/planets/${Id}`)
@@ -17,11 +18,13 @@ const Planet = () => {
     
         .catch(error =>{
             setData(null)
+            setErrorImg('http://www.quickmeme.com/img/ee/eea1e93546608fbb4e238bff8393da3105dfe414cb0a99f7f2af84f49401539b.jpg')
         })
     }, [Id]);
     
     return(
         <div>
+
             {
             data ?(
                 <div>
@@ -36,7 +39,7 @@ const Planet = () => {
                 </div>
             ) : 
             
-            <h2>Loading</h2>
+            <img src={errorImg} alt="Error" />
 
         }
         </div>

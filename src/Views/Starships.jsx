@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 const Starships = () => {
     const [data, setData] = useState()
     const {Id} = useParams();
+    const [errorImg, setErrorImg] = useState("");
     
     useEffect(() => {
         axios.get(`https://swapi.dev/api/starships/${Id}`)
@@ -17,8 +18,9 @@ const Starships = () => {
     
         .catch(error =>{
             setData(null)
-        
+            setErrorImg('http://www.quickmeme.com/img/ee/eea1e93546608fbb4e238bff8393da3105dfe414cb0a99f7f2af84f49401539b.jpg')
         })
+        
     }, [Id]);
     
     
@@ -44,7 +46,7 @@ const Starships = () => {
                 </div>
             ) : 
             
-            <h2>Loading</h2>
+            <img src={errorImg} alt="Error" />
 
         }
         </div>
